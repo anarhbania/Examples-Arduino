@@ -41,7 +41,7 @@ void loop()
 {
   SuplaDevice.iterate();
 
-  static uint32_t lastTime = 0;
+  static uint64_t lastTime = 0;
   if(millis() - lastTime > 2000)
   {
     lastTime = millis();
