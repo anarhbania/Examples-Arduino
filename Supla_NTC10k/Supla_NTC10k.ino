@@ -52,15 +52,22 @@ void loop()
 
 float NTC_Convert(uint16_t value)
 {
+	const float maxADC = 4095.0
 	const float resistor = 10000;
-	const float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
+	const float nominalResistance = 10000;
+	const float nominalTemperature = 25;
+	const float coefficient = 3950;
 
-	float resistanceLog, resistance, temperature;
+	float resistance, steinhart;
 
-	resistance = resistor * (1023.0 / (float)value - 1.0);
-	resistanceLog = log(resistance);
-	temperature = (1.0 / (c1 + c2 * resistanceLog + c3 * resistanceLog * resistanceLog * resistanceLog));
-	temperature -= 273.15;
+	resistance = resistor * (maxADC / (float)value - 1.0);
 
-	return temperature;
+	steinhart = resistance / nominalResistance;
+	steinhart = log(steinhart);
+	steinhart /= coefficient;
+	steinhart += 1.0 / (nominalTemperature + 273.15);
+	steinhart = 1.0 / steinhart;
+	steinhart -= 273.15;
+
+	return steinhart;
 }
