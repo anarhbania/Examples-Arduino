@@ -57,6 +57,7 @@ float NTC_Convert(uint16_t value)
   const float nominalResistance = 10000;
   const float nominalTemperature = 25;
   const float coefficient = 3950;
+  //const float coefficient = 3435;
 
   float resistance, steinhart;
 
