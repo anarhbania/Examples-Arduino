@@ -38,6 +38,8 @@ void setup()
   suplaButtonCfg->addAction(Supla::TOGGLE, suplaRelay, Supla::ON_CLICK_1);
 
   suplaRelay->setDefaultFunction(SUPLA_CHANNELFNC_POWERSWITCH);
+  suplaRelay->setDefaultStateRestore();
+  suplaRelay->onSaveState();
 
   SuplaDevice.setSuplaCACert(suplaCACert);
   SuplaDevice.setSupla3rdPartyCACert(supla3rdCACert);
