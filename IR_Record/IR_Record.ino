@@ -69,7 +69,7 @@ void loop()
 
 void interupt() // Interupt to log each time the IR signal changes state
 {
-  if (logAvailable) // if logAvailable is true (array is empty)
+  if(logAvailable) // if logAvailable is true (array is empty)
   {
     long m = micros(); // get time now
 
