@@ -1,6 +1,6 @@
 /* ------------------------------------------------- */
 
-#include "ESPTelnet.h"          // https://github.com/LennartHennigs/ESPTelnet
+#include "ESPTelnet.h"          
 
 /* ------------------------------------------------- */
 
@@ -25,6 +25,7 @@ void onTelnetConnect(String ip)
 void setup()
 {
   Serial.begin(SERIAL_SPEED);
+  Serial.println();
 
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
@@ -45,7 +46,7 @@ void setup()
 
   telnet.onInputReceived([](String str)
   {
-    Serial.print(str);
+    Serial.println(str);
   });
 
   telnet.begin(port);
