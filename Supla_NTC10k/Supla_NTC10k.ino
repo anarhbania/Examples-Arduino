@@ -21,7 +21,7 @@ Supla::LittleFsConfig configSupla;
 
 auto suplaButtonCfg = new Supla::Control::Button(PINOUT_BUTTON, true, true);
 
-auto suplaTemperatura = new Supla::Sensor::VirtualThermometer;
+auto suplaTemperature = new Supla::Sensor::VirtualThermometer;
 
 void setup() 
 {
@@ -46,7 +46,7 @@ void loop()
   {
     lastTime = millis();
     
-    suplaTemperatura->setValue(NTC_Convert(analogRead(PINOUT_NTC)));
+    suplaTemperature->setValue(NTC_Convert(analogRead(PINOUT_NTC)));
   }
 }
 
